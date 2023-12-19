@@ -2,50 +2,50 @@
 ## Name
 k8s-training-terraform-sa
 ## Permissions
-compute.disks.create
-compute.disks.get
-compute.firewalls.create
-compute.firewalls.delete
-compute.firewalls.get
-compute.globalOperations.get
-compute.images.get
-compute.instances.create
-compute.instances.delete
-compute.instances.get
-compute.instances.getIamPolicy
-compute.instances.setIamPolicy
-compute.instances.setMetadata
-compute.instances.setServiceAccount
-compute.instances.setTags
-compute.instanceTemplates.create
-compute.instanceTemplates.delete
-compute.instanceTemplates.get
-compute.instanceTemplates.useReadOnly
-compute.networks.create
-compute.networks.delete
-compute.networks.get
-compute.networks.updatePolicy
-compute.regionOperations.get
-compute.routers.create
-compute.routers.delete
-compute.routers.get
-compute.routers.update
-compute.subnetworks.create
-compute.subnetworks.delete
-compute.subnetworks.get
-compute.subnetworks.use
-compute.subnetworks.useExternalIp
-compute.zoneOperations.get
-compute.zones.get
-iam.roles.get
-iam.serviceAccounts.actAs
-iam.serviceAccounts.create
-iam.serviceAccounts.delete
-iam.serviceAccounts.get
-iam.serviceAccounts.getIamPolicy
-iam.serviceAccounts.list
-iam.serviceAccounts.setIamPolicy
-iap.tunnelInstances.getIamPolicy
-iap.tunnelInstances.setIamPolicy
-resourcemanager.projects.getIamPolicy
-resourcemanager.projects.setIamPolicy
+- compute.disks.create
+- compute.disks.get
+- compute.firewalls.create
+- compute.firewalls.delete
+- compute.firewalls.get
+- compute.globalOperations.get
+- compute.images.get
+- compute.instances.create
+- compute.instances.delete
+- compute.instances.get
+- compute.instances.getIamPolicy
+- compute.instances.setIamPolicy
+- compute.instances.setMetadata
+- compute.instances.setServiceAccount
+- compute.instances.setTags
+- compute.instanceTemplates.create
+- compute.instanceTemplates.delete
+- compute.instanceTemplates.get
+- compute.instanceTemplates.useReadOnly
+- compute.networks.create
+- compute.networks.delete
+- compute.networks.get
+- compute.networks.updatePolicy
+- compute.regionOperations.get
+- compute.routers.create
+- compute.routers.delete
+- compute.routers.get
+- compute.routers.update
+- compute.subnetworks.create
+- compute.subnetworks.delete
+- compute.subnetworks.get
+- compute.subnetworks.use
+- compute.subnetworks.useExternalIp
+- compute.zoneOperations.get
+- compute.zones.get
+- iam.roles.get
+- iam.serviceAccounts.actAs
+- iam.serviceAccounts.create
+- iam.serviceAccounts.delete
+- iam.serviceAccounts.get
+- iam.serviceAccounts.getIamPolicy
+- iam.serviceAccounts.list
+- iam.serviceAccounts.setIamPolicy
+- iap.tunnelInstances.getIamPolicy
+- iap.tunnelInstances.setIamPolicy
+- resourcemanager.projects.getIamPolicy
+- resourcemanager.projects.setIamPolicy

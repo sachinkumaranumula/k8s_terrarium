@@ -42,16 +42,16 @@ gcloud compute ssh <vm_name> --internal-ip
 
 ## Setup K8s cluster
 ### On every node
-- `su - k8s_contrib`, passwd k8s4ever (use this dedicated k8s admin user as your default user shell on every node)
+- `su - k8s_contrib`, passwd k8s4ever (use this dedicated k8s admin user as your default user shell on every node for admin activity)
 - Optional : Update _IP addresses_ in `sudo vi /etc/hosts` from terraform output if you want to DNS your own
 - To install kube binaries run `sudo sh /bin/k8s-node-setup.sh`
 
 ### On master node
-As *k8s_contrib*
-- Initialize kube cluster `sh /bin/k8s-admin-init.sh` (copy the kubeadm join command to use at worker)
-- To verify Control Plane node setup run `sudo sh /bin/k8s-node-verify.sh`
-As *all other users*
-- To setup kube config for the user do `sh /bin/k8s-admin-kubectl-config-setup.sh`
+- As *k8s_contrib*
+  - Initialize kube cluster `sh /bin/k8s-admin-init.sh` (copy the kubeadm join command to use at worker)
+  - To verify Control Plane node setup run `sudo sh /bin/k8s-node-verify.sh`
+- As *all other users*
+  - To setup kube config for the user do `sh /bin/k8s-admin-kubectl-config-setup.sh`
 
 ### On worker nodes
 - Copy output from master *sudo kubeadm init* as  `sudo kubeadm join ...` to join the cluster
