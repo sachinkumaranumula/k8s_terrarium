@@ -3,7 +3,7 @@ Terrarium that bootstraps a k8s cluster to start messing with
 
 
 # Why was this needed?
-When you start diving into k8s components everyone on the public web will send you to the Managed Public Cloud Services(GKE, EKS, AKS, IKS...) or set you up with a cloud provider CLI to provision all the cloud resources needed for k8s. If you are like me and dont want the managed route because you like a good slice of tech inside out and that the CLI does not feel right way to go about it and want to quickly bring things up but more importantly tear them down to keep costs down then this terrarium is for you.
+When you start diving into k8s components everyone on the public web will send you to the Managed Public Cloud Services(GKE, EKS, AKS, IKS...) or set you up with a cloud provider CLI to provision all the cloud resources needed for k8s. If you are like me and dont want the managed route because you like a good slice of tech inside out and that the CLI does not feel right way to go about it. Also, if you want to quickly bring a k8s cluster up but more importantly tear them down to keep costs down then this terrarium is for you.
 
 
 # How do I get going?
@@ -40,9 +40,9 @@ gcloud compute ssh <vm_name> --internal-ip
 *Or use Desktop IAP* (ease of use)
 
 
-## Setup k8s cluster
+## Setup K8s cluster
 ### On every node
-- `su - k8s_contrib`, passwd k8s4ever
+- `su - k8s_contrib`, passwd k8s4ever (use this dedicated k8s admin user as your default user shell on every node)
 - Optional : Update _IP addresses_ in `sudo vi /etc/hosts` from terraform output if you want to DNS your own
 - To install kube binaries run `sudo sh /bin/k8s-node-setup.sh`
 
