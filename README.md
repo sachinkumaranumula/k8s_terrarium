@@ -68,3 +68,8 @@ worker-1   Ready    <none>          2m12s   v1.28.2
 - for bash completions do `sh /bin/k8s-bash-setup.sh`
 - for *helm* run `sh /bin/k8s-helm-setup.sh`
 - start experimenting with [Beyond the Cheat Sheet](./docs/BeyondTheCheatSheet.md)
+
+## Clean up on Isle 8
+```bash
+terraform destroy
+```
