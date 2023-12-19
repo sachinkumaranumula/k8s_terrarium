@@ -8,7 +8,7 @@ When you start diving into k8s components everyone on the public web will send y
 
 # How do I get going?
 Pick the cloud provider from `terraform` directory and get going.
-> :info: Google Cloud is the only provider right now and has been picked as a tribute to them for giving us Borg/K8s
+> :trollface: Google Cloud is the only provider right now and has been picked as a tribute to them for giving us Borg/K8s
 
 
 ## gCloud
