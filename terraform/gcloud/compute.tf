@@ -6,7 +6,7 @@ resource "google_compute_instance_template" "k8s_node_template" {
 
   // Create a new boot disk from an image
   disk {
-    source_image = "ubuntu-2004-focal-v20231101"
+    source_image = "ubuntu-2004-focal-v20231213"
     auto_delete  = true
     boot         = true
   }

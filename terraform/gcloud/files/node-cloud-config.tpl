@@ -3,6 +3,7 @@ write_files:
   - path: /bin/k8s-bash-setup.sh
     permissions: "0774"
     content: |
+      #!/bin/bash 
       source <(kubectl completion bash) # set up autocomplete in bash into the current shell, bash-completion package should be installed first.
       echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
       alias k=kubectl
@@ -10,6 +11,7 @@ write_files:
   - path: /bin/k8s-cri-setup.sh
     permissions: "0774"
     content: |
+      #!/bin/bash 
       #### CONTAINERD ####
       echo "BEGIN: INSTALLING CONTAINERD"
       for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do apt-get remove $pkg; done
@@ -49,6 +51,7 @@ write_files:
   - path: /bin/k8s-tools-setup.sh
     permissions: "0774"
     content: |
+      #!/bin/bash 
       #### KUBEADM, KUBECTL, KUBELET ####
       echo "BEGIN: INSTALLING KUBEADM, KUBECTL, KUBELET"
       # You MUST disable swap in order for the kubelet to work properly.
@@ -69,10 +72,11 @@ write_files:
       # Reload sysctlt
       sysctl --system
       # Download public signing key
-      curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --yes --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+      curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --yes --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
       # Add k8s repositories
-      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
-      # Install (lays down 1.28)
+      # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
+      # Install (lays down 1.29)
       apt-get update
       apt -y install -y kubeadm kubelet kubectl
       apt-mark hold kubelet kubeadm kubectl
@@ -81,14 +85,16 @@ write_files:
   - path: /bin/k8s-node-setup.sh
     permissions: "0774"
     content: |
+      #!/bin/bash 
       #### UDPATE/UPGRADE ####
-      apt-get update && apt-get upgrade -y
+      apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq 
       apt-get install -y apt-transport-https ca-certificates curl gpg
       sh /bin/k8s-cri-setup.sh
       sh /bin/k8s-tools-setup.sh
   - path: /bin/k8s-node-verify.sh
     permissions: "0774"
     content: |
+      #!/bin/bash 
       lsmod | grep br_netfilter
       lsmod | grep overlay
       sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward

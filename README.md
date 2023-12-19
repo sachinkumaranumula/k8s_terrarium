@@ -13,7 +13,7 @@ Pick the cloud provider from `terraform` directory and get going.
 
 ## gCloud
 - Create [Google Cloud project](https://developers.google.com/workspace/guides/create-project) (e.g. k8s-training-xxxxxx)
-- Create [Service Account for terraform](https://cloud.google.com/iam/docs/keys-create-delete) and land it under credentials directory
+- Create [Service Account for terraform](https://cloud.google.com/iam/docs/keys-create-delete) with [permissions](./terraform/gcloud/credentials/TerraformServiceAccountPermissions.md) and land it under credentials directory. You would need this file set as value to `TF_VAR_credentials_file` env variable at 
 ```bash
 gcloud auth login
 gcloud config set project k8s-training-xxxxxx
@@ -47,20 +47,22 @@ gcloud compute ssh <vm_name> --internal-ip
 - To install kube binaries run `sudo sh /bin/k8s-node-setup.sh`
 
 ### On master node
-- Initialize kube cluster `sh /bin/k8s-admin-init.sh` (copy the kubeadm join command)
+As *k8s_contrib*
+- Initialize kube cluster `sh /bin/k8s-admin-init.sh` (copy the kubeadm join command to use at worker)
 - To verify Control Plane node setup run `sudo sh /bin/k8s-node-verify.sh`
+As *all other users*
+- To setup kube config for the user do `sh /bin/k8s-admin-kubectl-config-setup.sh`
 
 ### On worker nodes
 - Copy output from master *sudo kubeadm init* as  `sudo kubeadm join ...` to join the cluster
 - To verify Worker node setup run `sudo sh /bin/k8s-node-verify.sh`
 
-
 ## Finish
 - Check cluster health now by running `kubectl get nodes` on *master node* (should look like below)
 ```bash
 NAME       STATUS   ROLES           AGE     VERSION
-master-1   Ready    control-plane   4m15s   v1.28.2
-worker-1   Ready    <none>          2m12s   v1.28.2
+master-1   Ready    control-plane   4m15s   v1.29
+worker-1   Ready    <none>          2m12s   v1.29
 ```
 
 ## Next Steps
