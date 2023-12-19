@@ -67,3 +67,4 @@ worker-1   Ready    <none>          2m12s   v1.28.2
 - the nodes are setup with `.vimrc` to work with yaml (all k8s descriptors)
 - for bash completions do `sh /bin/k8s-bash-setup.sh`
 - for *helm* run `sh /bin/k8s-helm-setup.sh`
+- start experimenting with [Beyond the Cheat Sheet](./docs/BeyondTheCheatSheet.md)
