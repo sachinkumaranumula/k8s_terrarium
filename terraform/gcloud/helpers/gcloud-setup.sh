@@ -9,4 +9,4 @@ export TF_VAR_members=
 # E.g. Sample values
 #export TF_VAR_project=k8s-training-xxxxx
 #export TF_VAR_credentials_file="credentials/k8s-training-sa-credentials.json"
-#export TF_VAR_members="[\"user:sachinkumaranumula@thewhitepeacock.llc\"]""
+#export TF_VAR_members="[\"user:fancyk8suser@kubernetes.io\"]""
